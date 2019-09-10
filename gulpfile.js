@@ -1,7 +1,8 @@
 const gulp = require("gulp");
 const sass = require("gulp-sass");
 const browserSync = require("browser-sync").create();
-
+const sourcemaps = require("gulp-sourcemaps");
+cleanCSS = require("gulp-clean-css");
 // compile scss into css
 
 function style() {
@@ -11,6 +12,7 @@ function style() {
       .src("./app/scss/**/*.scss")
       // pass that file through the compiler
       .pipe(sass().on("error", sass.logError))
+      .pipe(cleanCSS())
       //output location
       .pipe(gulp.dest("./app/css"))
       //stream changes to all browsers
